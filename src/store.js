@@ -6,19 +6,19 @@ import createSagaMiddleware from 'redux-saga';
 import {refreshSaga} from './sagas';
 
 const logger = createLogger({
-    diff: true
+  diff: true
 });
 
 const saga = createSagaMiddleware();
 
 const middlewares = applyMiddleware(
-    // thunk,
-    saga,
-    logger
+  // thunk,
+  saga,
+  logger
 );
 
 const reducers = combineReducers({
-    tasks
+  tasks
 });
 
 export const store = createStore(tasks, middlewares);

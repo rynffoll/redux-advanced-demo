@@ -3,13 +3,13 @@ const API_BASE_URL = `https://api.mlab.com/api/1/databases/${M_DATABASE}/collect
 const API_KEY = 'you-api-key-form-mlab';
 
 const defaultOpts = {
-    headers: {
-        'Content-type': 'application/json'
-    }
+  headers: {
+    'Content-type': 'application/json'
+  }
 };
 
 export default function request(path, opts) {
-    const acctualOpts = {...defaultOpts, ...opts};
-    return fetch(`${API_BASE_URL}/${path}?apiKey=${API_KEY}`, acctualOpts)
-        .then(res => res.json());
+  const acctualOpts = {...defaultOpts, ...opts};
+  return fetch(`${API_BASE_URL}/${path}?apiKey=${API_KEY}`, acctualOpts)
+    .then(res => res.json());
 }
