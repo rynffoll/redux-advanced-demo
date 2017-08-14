@@ -1,6 +1,6 @@
 import {call, put, takeEvery, takeLatest} from 'redux-saga/effects';
 import * as types from './types';
-import request from './api';
+import {executeRequest} from './api';
 
 function findAllSuccess(tasks) {
   return {
@@ -16,15 +16,15 @@ function findAllError(err) {
   };
 }
 
-function* refresh(action) {
+function* fetchTasks(action) {
   try {
-    const data = yield call(request, '/tasks');
+    const data = yield call(executeRequest, '/tasks');
     yield put(findAllSuccess(data));
   } catch (e) {
     yield put(findAllError(e));
   }
 }
 
-export function* refreshSaga() {
-  yield takeEvery(types.FIND_ALL, refresh);
+export function* fetchTasksSaga() {
+  yield takeEvery(types.FIND_ALL, fetchTasks);
 }

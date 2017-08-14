@@ -3,7 +3,7 @@ import * as types from './types';
 const initialState = {
   isFetching: false,
   error: "",
-  tasks: []
+  items: []
 };
 
 export function tasks(state = initialState, action) {
@@ -17,7 +17,7 @@ export function tasks(state = initialState, action) {
     return {
       ...state,
       isFetching: false,
-      tasks: action.tasks
+      items: action.tasks
     };
   case types.FIND_ALL_ERROR:
     return {

@@ -1,10 +1,10 @@
 import * as types from './types';
-import request from './api';
+import {executeRequest} from './api';
 
-export function refresh() {
+export function fetchTasks() {
   return dispatch => {
     dispatch(findAll());
-    request('/tasks')
+    executeRequest('/tasks')
       .then(data => dispatch(findAllSuccess(data)))
       .catch(err => dispatch(findAllError(err)));
   };

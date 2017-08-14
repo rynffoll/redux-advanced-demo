@@ -8,7 +8,7 @@ const defaultOpts = {
   }
 };
 
-export default function request(path, opts) {
+export function executeRequest(path, opts) {
   const acctualOpts = {...defaultOpts, ...opts};
   return fetch(`${API_BASE_URL}/${path}?apiKey=${API_KEY}`, acctualOpts)
     .then(res => res.json());
